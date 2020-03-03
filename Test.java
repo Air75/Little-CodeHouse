@@ -1,3 +1,5 @@
+import java.io.DataInput;
+
 //import javax.swing.plaf.basic.BasicInternalFrameTitlePane.CloseAction;
 
 // public class Test{
@@ -28,7 +30,7 @@
 //             {
 //                   System.out.println("E");
 //             }
-          
+
 // 		}
 // 	}
 // public class Test{
@@ -293,7 +295,6 @@
 //       }
 //       }
 
-
 // public class Test
 // {
 //   public static void main(String[] args)
@@ -524,7 +525,7 @@
 // 	String name;
 
 // 	public Customer() {
-		
+
 // 	}
 // 	//不带有static的一个方法
 // 	//顾客购物
@@ -542,7 +543,6 @@
 //   System.out.println("he");
 // }
 // }
-
 
 // public class Test{
 //   int num = 1;
@@ -572,12 +572,12 @@
 //     U.setId(10);
 //     System.out.println(U.getId());
 //   }
-  
+
 // }
 // class User{
 //   private int id;
 //   public User() {
-    
+
 //   }
 
 //   public void setId(int id) {
@@ -587,7 +587,6 @@
 //     return id;
 //   }
 //   }
-
 
 // public class Test {
 
@@ -608,7 +607,7 @@
 //   String name;
 //   static String country = "中国";
 //   public Chinese() {
-    
+
 //   }
 //   public Chinese(String Id,String Name) {
 //     this.id = Id;
@@ -625,18 +624,90 @@
 //   }
 // } 
 
-public class Test{
-  {
-    System.out.println(1);
+// public class Test{
+//   {
+//     System.out.println(1);
+//   }
+//   {
+//     System.out.println(1);
+//   }
+//   {
+//     System.out.println(1);
+//   }
+//   public static void main(String[] args){
+//       new Test();
+//   }
+// } 
+
+// public class Test {//方法重写
+//   public static void main(String[] args) {
+//     Animal animal = new Animal();
+//     animal.move();
+//     Cat cat = new Cat();
+//     cat.move();
+//     Bird bird = new Bird();
+//     bird.move();
+//   }
+// }
+
+// class Animal {
+//   public void move() {
+//     System.out.println("动物在移动");
+//   }
+// }
+
+// class Cat extends Animal {
+
+// }
+
+// class Bird extends Animal {
+//   public void move() {
+//     System.out.println("鸟在飞");
+//   }
+// }
+
+public class Test {//多态
+  public static void main(String[] args) {
+
+    /*
+    1.Animal和Cat之间存在继承关系，Animal是父类，Cat是子类
+    2.Cat is Animal
+    3.new Cat()创建的对象的类型是Cat，animal2这个引用的数据类型是Animal，可见他们进行了类型转换
+    4.子类转换成父类型，称为向上转换/upcastint，或者称为自动类型转换。
+    5.Java中允许这种语法：父类型引用指向子类型对象。
+    */
+
+    Animal animal2 = new Bird();
+    
+    /*
+    1. Java程序永远分为编译阶段和运行阶段。
+    2. 先分析编译阶段，再分析运行阶段，编译无法通过，根本无法运行。
+    3. 编译阶段编译器检查animal2这个引用的数据类型为Animal，由于Animal.class字节码当中有move()方法，所以编译通过了，这个过程称为静态绑定，编译阶段绑定，只有静态绑定成功之后才有后面的进行。
+    4. 在程序运行阶段，JVM内存中真实创建的对象是Bird对象，那么以下程序在运行阶段一定会调用Cat对象的move()方法，此时发生了程序的动态绑定，运行阶段绑定。
+    5. 无论Bird类有没有重写方法，运行阶段一定调用的是Bird对象的move方法，因为底层真实对象就是Bird对象。
+    6. 父类型引用指向子类型对象这种机制导致程序存在编译阶段绑定和运行阶段绑定两种不同的形态/状态，这种机制可以称为一种多态语法机制。
+    */
+    
+    animal2.move();//鸟在飞
+    //animal2.eat();//报错
   }
-  {
-    System.out.println(1);
+}
+
+class Animal {
+  public void move() {
+    System.out.println("动物在移动");
   }
-  {
-    System.out.println(1);
+}
+
+class Cat extends Animal {
+
+}
+
+class Bird extends Animal {
+  public void move() {
+    System.out.println("鸟在飞");
   }
-  public static void main(String[] args){
-      new Test();
-      System.out.println("hello world");
+  public void eat(){
+    System.out.println("鸟吃虫子");
   }
-} 
+}
