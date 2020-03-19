@@ -1,4 +1,4 @@
-# JAVA学习笔记(基础篇)
+# JAVA、HTML学习笔记(基础篇)
 
 ## **1、常用的DOS命令**
 
@@ -1618,7 +1618,7 @@ public class Test {//多态
     */
 
     Animal animal2 = new Bird();
-    
+
     /*
     1. Java程序永远分为编译阶段和运行阶段。
     2. 先分析编译阶段，再分析运行阶段，编译无法通过，根本无法运行。
@@ -1627,7 +1627,7 @@ public class Test {//多态
     5. 无论Bird类有没有重写方法，运行阶段一定调用的是Bird对象的move方法，因为底层真实对象就是Bird对象。
     6. 父类型引用指向子类型对象这种机制导致程序存在编译阶段绑定和运行阶段绑定两种不同的形态/状态，这种机制可以称为一种多态语法机制。
     */
-    
+
     animal2.move();//鸟在飞
     //animal2.eat();//报错
      Bird bird = (Bird)animal2;//强制类型转换（向上转型）
@@ -1681,7 +1681,7 @@ class Bird extends Animal {
 }
 ```
 
-* 继续学习<a href="https://www.bilibili.com/video/av11361088?p=153">点这P153</a> 
+* 继续学习<a href="https://www.bilibili.com/video/av11361088?p=153">点这P153</a>
 * 注：向下转型也需要两种类型之间必须有继承关系，不然编译报错。
 * 什么时候需要向下转型呢？
   * 当调用的方法是子类型中特有的，在父类型当中不存在，必须进行向下转型。
@@ -1691,3 +1691,233 @@ class Bird extends Animal {
   * 能使用索泰精良使用多态。
   * 父类型引用指向子类型对象。
   * 核心：面向抽象编程，尽量不要面向具体编程。
+
+  ```java
+  public class Test {//多态的应用
+  public static void main(String[] args) {
+    Master xiaoming = new Master();
+    Cat tom = new Cat();
+    xiaoming.feed(tom);
+    Dog Jary = new Dog();
+    xiaoming.feed(Jary);
+      }
+    }
+
+    class Master {
+      public void feed(Pet pet) {
+        pet.eat();
+      }
+    }
+
+    class Pet {
+      public void eat() {
+      }
+    }
+
+    class Cat extends Pet {//继承pet
+      public void eat() {
+        System.out.println("小猫吃鱼！");
+      }
+    }
+
+    class Dog extends Pet {//继承pet
+      public void eat() {
+        System.out.println("小狗啃骨头！");
+      }
+    }
+  ```
+
+******
+
+### **11、final关键字**
+
+* eclipse怎么链接源码？
+  * 打开某个.class字节码文件，当没有看到源码的时候：点击“Attached Source”;workspace(源码在当前的工作区当中)/External File(源码在某个压缩包当中)/External Folder(源码在某个目录当中)
+  * 尽量所有的程序都链接源码，养成看源代码的好习惯。
+* 对于以后学习的类库，一般都是包括三个部分：
+  * 源码（可以看源代码理解程序）
+  * 字节码（程序开发过程中使用的就是这部分）
+  * 帮助文档（对源码的解释说明）
+  
+  ```java
+  public class Test {// string当中的方法调用示例
+  public static void main(String[] args) {
+    String newString = "ab替换前ab替换前ab替换前ab替换前".replaceAll("替换前", "替换后");
+    System.out.println(newString);
+    System.out.println("这句话一共8个字".length());
+    }
+  }
+  ```
+
+* 关于final：
+  * final是一个关键字，表示最终的，不可变的；
+  * final修饰的类无法被继承；
+  * final修饰的方法无法被覆盖；
+  * final修饰的变量一旦被复制之后，不可重新赋值。
+  * final修饰的实例变量：
+    * 实例变量有默认值+final修饰的变量一旦赋值就不能重新赋值，综合考虑，Java语言最终规定实例变量使用final修饰之后，必须手动赋值，不能采用系统默认值。
+
+    ```java
+    public class Test{
+      //final int age;//编译错误
+      //第一种解决方案
+      final int age = 10;
+      //第二种解决方案
+      final int num;
+      public Test(){
+        this.num = 20;
+        //以上的两种解决方案，其本质上就是一种方式，都是在构造方法执行过程中给实例变量赋值。
+        public static void main(String[] args){
+          System.out.println("Test");
+        }
+      }
+    }
+    ```
+  
+  * final修饰的引用，一旦指向某个对象之后，不能再指向其他对象，那么被指向的对象无法被垃圾回收器回收。但是所指向的对象内部的内存是可以被修改的。
+  * final修饰的实例变量是不可变的，这种变量一般和static联合使用，被称为“常量”，常量的定义语法格式：`public static final 类型 变量名 = 值;`
+    * java规范中要求所有常量的名字全部大写， 每个单词之间使用下划线连接
+* 继续学习<a href="https://www.bilibili.com/video/av11361088?p=156">点这P156</a>
+
+******
+
+### **12、关于package和import**
+
+* 关于Java语言中的包机制
+  
+  1. 包又被称为package，Java中引入package这种语法机制主要是为了方便程序的管理。不同功能的类被分门别类的放到不同的软件包当中，查找与管理比较方便，易于维护。
+
+  2. 怎么定义package？
+     * 再Java源程序的第一行编写package语句。
+     * package只能编写一个语句。
+     * 语法结构：`package 包名;`
+
+  3. 包名的命名规范：
+     * 公司域名倒序 + 项目名 + 模板名 + 功能名;采用这种方式重名的几率比较低，因为公司的域名具有全球唯一性。
+
+  4. 包名要求全部小写，包名也是标识符，必须遵循标识符的命名规则。一个包将来对应的一个目录。例：`package com.air.javatest.first;`四个目录（目录之间使用.隔开）
+
+  5. 使用包之后怎么编译？怎么运行？
+     * 使用package机制之后，类名不在是Test了，而是：com.air.javatest.first.Test
+
+     ```java
+     package com.air.javatest.first;
+     public class Test{
+       public static void main(String[] srgs){
+         System.out.println("Test main method!");
+       }
+     }
+     ```
+
+* 关于import
+  * import语句用来完成导入其他类，同一个包下的类不需要导入，不在同一个包下的需要手动导入。
+  * 语法格式：`import 类名;`,`import 包名.*;`
+  * import语句需要写在package之下，类之上。
+  * 什么时候需要import？
+    * 不是java.lang包下，并且不在同一个包下的时候，需要使用import进行引入。
+
+### **13、关于访问控制权限**
+
+* 访问控制权限修饰符：
+  * 访问控制权限修饰符来控制元素的访问范围；
+  * 访问控制权限修饰符包括：
+    * public 表示公开的，再任何位置都可以访问
+    * protected
+    * 缺省
+    * private 表示私有的，只能在本类中访问
+  * 访问控制权限修饰符可以修饰类、变量、方法...
+  * 当某个数据只希望子类使用，使用protected进行修饰。
+  * 修饰符的范围：private < 缺省 < protected < public
+
+******
+
+* **第二部分**
+
+******
+
+## 4、HTML学习笔记
+
+* 课程链接<a href="https://www.bilibili.com/video/av62468669?p=1">动力节点</a>
+* 第一个html网页
+
+```html
+<!--
+  1.这是html的注释；
+  2.加上一下代码的第一行就表示html5语法，去掉就是html4
+  3.html不区分大小写，语法松散不严格
+-->
+<!doctype html>
+<html>
+  <head>
+    <title>网页的标题</title>
+  </head>
+  <body>
+  网页的主体
+  </body>
+</html>
+```
+
+* html的基本标签
+  
+  ```html
+  <!doctype html>
+  <html>
+    <head>
+      <title>html的基本标签</title>
+    </head>
+    <body>
+    <!--段落标记-->
+    <p>123</p><p>abc</p>
+    <!--标题字：是html中预留的格式-->
+    <h1>标题大小1</h1>
+    <h2>标题大小2</h2>
+    <h3>标题大小3</h3>
+    <h4>标题大小4</h4>
+    <h5>标题大小5</h5>
+    <h6>标题大小6</h6>
+    <!--换行标记,br是一个独目标记-->
+    hello<br>hi
+    <!--横线标记-->
+    <hr>
+    <!--color和width都是hr的属性-->
+    <hr color="red" width="50%">
+    <hr color='green' width=30%>
+    <!--预留格式-->
+    <pre>
+    public class Test{
+      public static void main(String[] args){
+        System.out.println("预留格式保留当前编写内容的格式显示在网页上，类似与markdown中的```fffjdksl```");
+      }
+    }
+    </pre>
+
+    <del>删除字</del>
+    <ins>插入字</ins>
+    <b>粗体字</b>
+    <i>斜体字</i>
+    <!--右上角加字、右下角加字-->
+    右上角加字表示10的平方10<sup>2</sup><br>
+    右下角加字表示角标20<sub>1</sub>
+
+    <font color="green" size="50">字体标签</font>
+    </body>
+  </html>
+
+* html中的实体符号
+  ```html
+  <!doctype html>
+  <html>
+    <head>
+    <title>实体符号</title>
+    </head>
+    <body>
+    <!--要在html中表示 3<10 或者 10>3 需要使用实体符号&lt;和&gt;实体符号以&开始，以;结束-->
+    3&lt;10<br>
+    10&gt;3
+
+    <!--在html中加空格-->
+    加&nbsp;&nbsp;&nbsp;3个空格
+    </body>
+  </html>
+
+  * 继续学习<a href="https://www.bilibili.com/video/av62468669?p=7">点这P7</a>

@@ -726,31 +726,95 @@
 //   }
 // }
 
-public class Test {
-  public static void main(String[] args) {
-    Master master = new Master();
-    Cat tom = new Cat();
-    master.feed(tom);
-    Dog Jary = new Dog();
-    master.feed(Jary);
-  }
-}
+// public class Test {//多态的应用
+//   public static void main(String[] args) {
+//     Master xiaoming = new Master();
+//     Cat tom = new Cat();
+//     xiaoming.feed(tom);
+//     Dog Jary = new Dog();
+//     xiaoming.feed(Jary);
+//     Bird Bob = new Bird();
+//     xiaoming.feed(Bob);
+//   }
+// }
 
-class Master {
-  public void feed(Pet pet) {
-    pet.eat();
-  }
+// class Master {
+//   public void feed(Pet pet) {
+//     pet.eat();
+//   }
+// }
+
+// class Pet {
+//   public void eat() {
+//   }
+// }
+
+// class Cat extends Pet {
+//   public void eat() {
+//     System.out.println("小猫吃鱼！");
+//   }
+// }
+
+// class Dog extends Pet {
+//   public void eat() {
+//     System.out.println("小狗啃骨头！");
+//   }
+// }
+// class Bird extends Pet{
+//   public void eat(){
+//     System.out.println("小鸟吃虫！");
+//   }
+// }
+
+
+
+// public class Test {
+//   public static void main(String[] args) {// string当中的方法调用示例
+//     String newString = "ab替换前ab替换前ab替换前ab替换前".replaceAll("替换前", "替换后");
+//     System.out.println(newString);
+//     System.out.println("这句话一共8个字".length());
+//   }
+// }
+
+
+// public class Test{
+//   public static void main(String[] args) {
+//     final int i = 100;
+//     //i = 10;//编译错误，无法为最终变量i分配值：The final local variable i cannot be assigned. It must be blank and not using a compound assignment
+//     System.out.println(i);
+//   }
+// }
+// class T{
+//   public void PutS(){
+//   System.out.println("Test");
+// }
+// }
+// class A extends T{
+//   //public void PutS();//报错
+// }
+
+// public class Test{
+//   //final int age;//编译错误
+//   //第一种解决方案
+//   final int age = 10;
+//   //第二种解决方案
+//   final int num;
+//   public Test(){
+//     this.num = 20;
+//   }
+// }
+
+
+public class Test{
+public static void main(String[] args) {
+  User u = new User();
+  System.out.println(u.i);
+  System.out.println(u.j);
 }
-class Pet{
-  public void eat(){}
-  }
-class Cat extends Pet{
-  public void eat() {
-    System.out.println("小猫吃鱼！");
-  }
 }
-class Dog extends Pet{
-  public void eat(){
-    System.out.println("小狗啃骨头！");
-  }
+class User{
+  //受保护的
+  protected int i = 10;
+  //缺省的
+  int j = 20;
 }
