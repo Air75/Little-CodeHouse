@@ -1904,6 +1904,7 @@ class Bird extends Animal {
   </html>
 
 * html中的实体符号
+
   ```html
   <!doctype html>
   <html>
@@ -1919,5 +1920,472 @@ class Bird extends Animal {
     加&nbsp;&nbsp;&nbsp;3个空格
     </body>
   </html>
+  ```
 
-  * 继续学习<a href="https://www.bilibili.com/video/av62468669?p=7">点这P7</a>
+  * 继续学习<a href="https://www.bilibili.com/video/av62468669?p=8">点这P8</a>
+
+* html的表格
+
+  ```html
+  <!doctype html>
+  <html>
+    <head>
+      <title>html中的表格</title>
+    </head>
+    <body>
+      <center><h2>信息列表</h2></center>
+      <hr color="red">
+       <!--border="1px"设置表格的边框为1像素宽度-->
+      <table align="center" border='1px' width=70% height="100px">
+        <!--align对齐方式-->
+        <tr align="center">
+        <td>a</td>
+        <td>b</td>
+        <td>c</td>
+        </tr>
+        <tr align="left">
+        <td>d</td>
+        <td>e</td>
+        <td>f</td>
+        </tr>
+        <tr align="right">
+        <td>x</td>
+        <td>y</td>
+        <td>z</td>
+        </tr>
+      </table>
+    </body>
+  </html>
+  ```
+
+* 单元格合并
+  ```html
+  <!doctype html>
+  <html>
+    <head>
+      <title>表格单元格合并，以及th标签</title>
+    </head>
+    <body>
+      <table border=1px width=70% height="150px">
+        <!--
+          th 标签也是单元格标签，比 td 多了居中和加粗
+        -->
+        <tr>
+          <th>ID</th>
+          <th>MON</th>
+          <th>SNO</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>a</td>
+          <td>b</td>
+         <!--
+           注意：
+           1. row合并的时候，删除“下面”的单元格
+              即若要合并c f，则把f删除。
+          2.  col合并的时候，对删除没有具体要求。
+         --> 
+          <td rowspan="2">c</td>
+        </tr>
+        <tr>
+          <td colspan="2">d</td>
+          <!-- <td>e</td> -->
+          <!-- <td>f</td> -->
+        </tr>
+      </table>
+    </body>
+  </html>
+  ```
+
+  * thead,tbody,tfoot标签
+    * 在table中不是必须的，只是这样做便于后期的Js代码的编写。
+
+    ```html
+    <!doctype html>
+    <html>
+
+    <head>
+        <title>表格单元格合并</title>
+    </head>
+
+    <body>
+        <table border=1px width=70% height="150px">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>MON</th>
+                    <th>SNO</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr align="center">
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+            <tr align="center">
+                <td>a</td>
+                <td>b</td>
+                <td>c</td>
+            </tr>
+            </tbody>
+
+            <tfoot>
+                <tr align="center">
+                    <td>d</td>
+                    <td>e</td>
+                    <td>f</td>
+                </tr>
+            </tfoot>
+        </table>
+    </body>
+
+    </html>
+    ```
+
+* 背景颜色和背景图片
+  
+  ```html
+  <!doctype html>
+  <html>
+
+  <head>
+      <title>背景颜色和背景图片</title>
+  </head>
+  <!--bgcolor设置背景色，background设置背景图片-->
+  <body bgcolor="green" background="E:\代码\Java\QQ图片20200310201541 (2).jpg">
+  
+  </body>
+
+  </html>
+  ```
+
+* 图片
+  ```html
+  <!doctype html>
+  <html>
+
+  <head>
+      <title>图片</title>
+  </head>
+
+  <body>
+    <!--
+      1.设置图片宽度和高度的时候，只设置宽度，高度会进行等比例缩放；
+      2.img标签就是图片标签；
+      3.src属性是图片的路径；
+      4.width设置宽度，height设置高度；
+      5.title设置鼠标悬停时显示的信息
+      6.alt设置图片加载失败时显示的提示信息
+    -->
+      <img src="E:\代码\Java\QQ图片20200310201541 (2).jpg" width="100px" title="我是图片" alt="找不到图片"/>
+  </body>
+
+  </html>
+  ```
+
+  * 继续学习<a href="https://www.bilibili.com/video/av62468669?p=14">点这P14</a>
+
+******
+
+* 超链接
+
+  ```html
+  <!doctype html>
+  <html>
+    <head>
+      <title>超链接</title>
+    </head>
+    <body>
+      <!--
+        href: hot references 热引用
+        href属性后面一定时一个资源的地址
+        href后面的路径可以是绝对路径，也可以是相对路径，可以是网络中某个资源的路径，也可以是本地资源的路径
+      -->
+      <!--
+        超链接有一个target属性，可取
+        _blank  新窗口
+        _self   当前窗口（默认是这种方式）
+        _top    顶级窗口
+        _parent 父窗口
+      -->
+      <a href="www.baidu.com">百度</a>
+       <a href="https://www.baidu.com/">
+        <img src="E:\代码\Java\QQ图片20200310201541 (2).jpg" width="100px" title="我是图片" alt="找不到图片">
+      图片链接</a>
+    </body>
+  </html>
+  ```
+
+  * 超链接的作用：
+    * 通过超链接可以从浏览器向服务器发送请求。
+    * 浏览器向服务器发送数据（请求：request）
+    * 服务器向浏览器发送数据（响应：response）
+    * B/S结构的系统，每一个请求都会对应一个响应。
+
+******
+
+* 列表
+
+  ```html
+  <!doctype html>
+  <html>
+    <head>
+      <title>列表</title>
+    </head>
+    <body>
+      <!--无序列表-->
+      <ul type="circle">
+        <li>中国
+          <ul>
+            <li>北京</li>
+            <li>天津</li>
+          </ul>
+        </li>
+        <li>美国</li>
+        <li>日本</li>
+      </ul>
+      <hr color="green">
+      有序列表
+      <hr>
+      <ol type="1">
+        <li>水果
+          <ol>
+            <li>苹果</li>
+            <li>香蕉</li>
+            <li>西瓜</li>
+          </ol>
+        </li>
+        <li>蔬菜</li>
+        <li>甜点</li>
+      </ol>
+    </body>
+  </html>
+  ```
+  
+* 表单
+  ```html
+  <!doctype html>
+  <html>
+    <head>
+      <title>表单</title>
+    </head>
+    <body>
+      <!--
+        1.表单有什么用？
+          收集用户信息，表单展现之后，用户填写表单，点击提交按钮提交数据个服务器。
+        2.怎么画一个表单？
+          使用form标签。
+        3.一个网页中可以有多个表单。
+        4.表单最终是需要提交数据给服务器的，在action中填写服务器地址，action属性用来指定数据提交给哪个服务器。action属性和超链接中的href属性一样，都可以向服务器发送请求。
+      -->
+      <form action="localhost:8080/save">
+        <!--
+          画一个提交按钮，这个按钮可以提交表单
+          画按钮可以使用input输入域,type="submit"的时候表示该按钮是一个提交按钮，具有提交表单的能力
+        -->
+        <input type="submit"/>
+
+        <!--这是一个普通按钮，不具有提交功能-->
+        <input type="button" value="设置按钮上显示的文本"/>
+      </form>
+       <hr>
+       <!--
+         表单是以什么格式提交数据给服务器的？
+          格式：file:///E:/%E4%BB%A3%E7%A0%81/Java/Test.html?username=javg&userpwd=232323
+          http协议规定的，必须以这种格式提交给服务器。
+          重点强调：表单填写了name属性的，一律会提交给服务器，不想提交这一项，就不要写name属性。
+       -->
+       表单示例
+          <form>
+        <table>
+          <tr>
+            <td>用户名</td>
+            <!--加上name之后才会将数据提交上去 -->
+            <td><input type="text" name="username" value="手机/邮箱"></td>
+          </tr>
+          <tr>
+            <td>密码</td>
+            <td><input type="password" name="userpwd"></td>
+          </tr>
+          <tr align="center">
+            <td colspan="2"><input type="submit">
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <input type="reset"></td>
+          </tr>
+        </table>
+      </form>
+    </body>
+  </html>
+  ```
+
+  * 表单示例
+
+  ```html
+    <!doctype html>
+  <html>
+    <head>
+      <title>表单示例，用户注册页面</title>
+    </head>
+    <body>
+      <!--
+        form表单method属性：
+          get：采用get方式提交的时候，用户提交的信息会显示在浏览器的地址栏上；
+          post：采用post方式提交的时候，用户提交的信息不会显示在浏览器的地址栏上；
+          默认为get。
+        -->
+      <form action="" method="post">
+        用户名
+        <input type="text" name="username"/><br>
+        密码
+        <input type="password" name="userpwd"/><br>
+        确认密码
+        <input type="password"/><br>
+        性别
+        <input type="radio" name="sex" value="男" checked/>男
+        <input type="radio" name="sex" value="女"/>女<br>
+        兴趣爱好
+        <input type="checkbox" name="inters" value="乒乓球"/>乒乓球
+        <input type="checkbox" name="inters" value="篮球"/>篮球
+        <input type="checkbox" name="inters" value="羽毛球"/>羽毛球<br>
+        学历
+        <select name="grade">
+          <option value="高中">高中</option>
+          <option value="小学">小学</option>
+          <option value="初中">初中</option>
+          <option value="大学"selected>大学</option>
+        </select><br>
+        简介<!--文本域没有value属性，用户填写的内容就是value-->
+        <textarea rows="10"cols="60"name="intre"></textarea><br>
+        <input type="submit" value="注册">
+        <input tyoe="reset" value="清空">
+      </form>
+    </body>
+  </html>
+  ```
+
+  * 下拉列表支持多选
+  
+  ```html
+  <!doctype html>
+  <html>
+    <head>
+      <title>下拉列表支持多选，按住ctrl键</title>
+    </head>
+    <body>
+      <select multiple="multiple" size="2">
+        <option>贵阳</option>
+        <option>遵义</option>
+        <option>安顺</option>
+      </select>
+    </body>
+  </html>
+  ```
+
+  * file控件
+  
+  ```html
+    <!doctype html>
+  <html>
+    <head>
+      <title>file控件</title>
+    </head>
+    <body>
+      <input type="file"/>
+    </body>
+  </html>
+  ```
+
+  * hidden控件
+  ```html
+    <!doctype html>
+    <html>
+
+    <head>
+      <title>hidden控件</title>
+    </head>
+
+    <body>
+      <form>
+        <!--隐藏域，网页上看不见，但是表单提交的时候数据会自动提交给服务器-->
+        <input type="hidden" name="userid" value="111" />
+        用户代码<input type="text" name="usercode" />
+        <input type="submit" value="提交" />
+      </form>
+    </body>
+
+    </html>
+    ```
+  
+  * readonly和disableed
+
+  ```html
+  <!doctype html>
+  <html>
+
+  <head>
+    <title>readonly和disableed</title>
+  </head>
+  <!--
+    readonly和disableed都是只读不能修改。但是readonly可以提交给服务器，disableed数据不会提交给服务器（即使有name属性也不提交。）
+  -->
+  <body>
+    <form>
+      用户代码<input type="text" name="usercode" value="111" readonly/>
+      用户名<input type="text" name="username" value="zhangsan"disabled/><br>
+      <input type="submit" value="提交" />
+    </form>
+  </body>
+
+  </html>
+  ```
+
+  * input控件的maxlength属性
+  
+  ```html
+  <!doctype html>
+  <html>
+
+  <head>
+    <title>input控件的maxlength属性</title>
+  </head>
+
+  <body>
+    <form>
+      最多输入3个字<input type="text" maxlength="3" name="usercode" />
+    </form>
+  </body>
+
+  </html>
+  ```
+
+  * html中元素的ID属性
+    * 在html文档当中，任何元素（节点）都有id属性，id属性是该节点的唯一标识，所以在同一个html文档中id值不能重复。
+    * 表单提交数据的时候，只和name有关，和id无关。
+    * id有什么用？
+      * JavaScript语言，可以对html文档当中的任意节点进行增删改的操作。那么增删改之前需要先拿到这个节点，通常我们通过id来拿节点对象。id的存在，让我们获取元素（节点）更方便。
+    * html文档是一棵树，树上有很多节点，每一个节点都有唯一的id。JavaScript主要就是对这棵DOM树上的节点进行增删改的。DOM（document）
+
+  ```html
+  <!doctype html>
+  <html>
+
+  <head>
+    <title>html中元素的id属性</title>
+  </head>
+
+  <body>
+    <form id="myform">
+      <input type="text" id="username" name="username" />
+    </form>
+  </body>
+
+  </html>
+  ```
+
+  * 继续学习<a href="https://www.bilibili.com/video/av62468669?p=26">点这P26</a>
