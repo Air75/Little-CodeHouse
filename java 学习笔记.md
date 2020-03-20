@@ -2496,31 +2496,32 @@ class Bird extends Animal {
      * get：在地址栏显示请求信息【地址栏能够容纳的信息有限，4-5KB】；
      * post：在地址栏不显示请求信息【文件上传操作，必须是post】。
 
-  ```html
-   <%@ page language="java" contentType="text/html; charset=UTF-8"
-       pageEncoding="UTF-8"%>
-   <!DOCTYPE html>
-   <html>
-   <head>
-   <meta charset="UTF-8">
-   <title>Insert title here</title>
-   </head>
-   <body>
-  <form action="show.jsp"  method="post">
-  用户名：<input type="text" name="uname" /><br/>
-  密码：<input type="password" name="upwd"/><br/>
-  年龄：<input type="text" name="uage"/><br/>
-  爱好：<br/>
-  <input type="checkbox" name="uhobbies" value = "足球"/>足球
-  <input type="checkbox" name="uhobbies" value = "篮球"/>篮球
-  <input type="checkbox" name="uhobbies" value = "乒乓球"/>乒乓球<br/>
-  <input type="submit" value="注册">
-  </form>
-   </body>
-   </html>
-     ```
+    ```html
+    <%@ page language="java" contentType="text/html; charset=UTF-8"
+        pageEncoding="UTF-8"%>
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    </head>
+    <body>
+    <form action="show.jsp"  method="post">
+    用户名：<input type="text" name="uname" /><br/>
+    密码：<input type="password" name="upwd"/><br/>
+    年龄：<input type="text" name="uage"/><br/>
+    爱好：<br/>
+    <input type="checkbox" name="uhobbies" value = "足球"/>足球
+    <input type="checkbox" name="uhobbies" value = "篮球"/>篮球
+    <input type="checkbox" name="uhobbies" value = "乒乓球"/>乒乓球<br/>
+    <input type="submit" value="注册">
+    </form>
+    </body>
+    </html>
+    ```
 
-     * 建议使用tomcat时，首先在server.xml 中统一get方式的编码  在设置端口号的后面加上 URIEncoding="UTF-8"
+   * 建议使用tomcat时，首先在server.xml 中统一get方式的编码  在设置端口号的后面加上 URIEncoding="UTF-8"
+
 3. response：响应对象
    * 提供的方法：
      1. void addCookie(Cookie Cookie); 服务端向客户端增加Cookie对象
@@ -2534,13 +2535,13 @@ class Bird extends Animal {
        2. String getName(); 获取name
        3. String getValue();获取value
        4. void setMaxAge(int expiry); 最大有效期（秒）
-    * 服务端准备cookie：
-      * response.addCookie(Cookie cookie); 页面跳转：转发、重定向
-    * 客户端获取cookie：
-      * request.getCookies();
+     * 服务端准备cookie：
+       * response.addCookie(Cookie cookie); 页面跳转：转发、重定向
+     * 客户端获取cookie：
+       * request.getCookies();
 5. pageContext
 
 6. application
 7. config
 8. page
-9.  exception
+9. exception
