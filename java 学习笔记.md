@@ -1837,8 +1837,11 @@ class Bird extends Animal {
 
 ## 4、HTML学习笔记
 
-* 课程链接<a href="https://www.bilibili.com/video/av62468669?p=1">动力节点</a>
-* 第一个html网页
+* 课程链接<a href="https://www.bilibili.com/video/av62468669?p=1">动力节点老杜</a>
+
+******
+
+### 1、第一个html网页
 
 ```html
 <!--
@@ -1857,7 +1860,9 @@ class Bird extends Animal {
 </html>
 ```
 
-* html的基本标签
+******
+
+### 2、html的基本标签
   
   ```html
   <!doctype html>
@@ -1902,8 +1907,11 @@ class Bird extends Animal {
     <font color="green" size="50">字体标签</font>
     </body>
   </html>
+  ```
 
-* html中的实体符号
+******
+
+### 3、html中的实体符号
 
   ```html
   <!doctype html>
@@ -1924,7 +1932,9 @@ class Bird extends Animal {
 
   * 继续学习<a href="https://www.bilibili.com/video/av62468669?p=8">点这P8</a>
 
-* html的表格
+******
+
+### 4、html的表格
 
   ```html
   <!doctype html>
@@ -1958,7 +1968,10 @@ class Bird extends Animal {
   </html>
   ```
 
-* 单元格合并
+******
+
+### 5、单元格合并
+
   ```html
   <!doctype html>
   <html>
@@ -1988,7 +2001,7 @@ class Bird extends Animal {
            1. row合并的时候，删除“下面”的单元格
               即若要合并c f，则把f删除。
           2.  col合并的时候，对删除没有具体要求。
-         --> 
+         -->
           <td rowspan="2">c</td>
         </tr>
         <tr>
@@ -2001,8 +2014,11 @@ class Bird extends Animal {
   </html>
   ```
 
-  * thead,tbody,tfoot标签
-    * 在table中不是必须的，只是这样做便于后期的Js代码的编写。
+******
+
+### 6、thead,tbody,tfoot标签
+
+* 在table中不是必须的，只是这样做便于后期的Js代码的编写。
 
     ```html
     <!doctype html>
@@ -2048,7 +2064,9 @@ class Bird extends Animal {
     </html>
     ```
 
-* 背景颜色和背景图片
+******
+
+### 7、背景颜色和背景图片
   
   ```html
   <!doctype html>
@@ -2065,7 +2083,10 @@ class Bird extends Animal {
   </html>
   ```
 
-* 图片
+******
+
+### 8、图片
+
   ```html
   <!doctype html>
   <html>
@@ -2093,7 +2114,7 @@ class Bird extends Animal {
 
 ******
 
-* 超链接
+### 9、超链接
 
   ```html
   <!doctype html>
@@ -2122,15 +2143,15 @@ class Bird extends Animal {
   </html>
   ```
 
-  * 超链接的作用：
-    * 通过超链接可以从浏览器向服务器发送请求。
-    * 浏览器向服务器发送数据（请求：request）
-    * 服务器向浏览器发送数据（响应：response）
-    * B/S结构的系统，每一个请求都会对应一个响应。
+* 超链接的作用：
+  * 通过超链接可以从浏览器向服务器发送请求。
+  * 浏览器向服务器发送数据（请求：request）
+  * 服务器向浏览器发送数据（响应：response）
+  * B/S结构的系统，每一个请求都会对应一个响应。
 
 ******
 
-* 列表
+### 10、列表
 
   ```html
   <!doctype html>
@@ -2168,7 +2189,10 @@ class Bird extends Animal {
   </html>
   ```
   
-* 表单
+******
+
+### **11、表单**
+
   ```html
   <!doctype html>
   <html>
@@ -2224,7 +2248,9 @@ class Bird extends Animal {
   </html>
   ```
 
-  * 表单示例
+******
+
+### 12、表单示例
 
   ```html
     <!doctype html>
@@ -2269,7 +2295,9 @@ class Bird extends Animal {
   </html>
   ```
 
-  * 下拉列表支持多选
+******
+
+### 13、下拉列表支持多选
   
   ```html
   <!doctype html>
@@ -2287,7 +2315,9 @@ class Bird extends Animal {
   </html>
   ```
 
-  * file控件
+******
+
+### 14、file控件
   
   ```html
     <!doctype html>
@@ -2301,7 +2331,10 @@ class Bird extends Animal {
   </html>
   ```
 
-  * hidden控件
+******
+
+### 15、hidden控件
+
   ```html
     <!doctype html>
     <html>
@@ -2320,9 +2353,11 @@ class Bird extends Animal {
     </body>
 
     </html>
-    ```
-  
-  * readonly和disableed
+  ```
+ 
+******
+ 
+### 16、readonly和disableed
 
   ```html
   <!doctype html>
@@ -2345,7 +2380,9 @@ class Bird extends Animal {
   </html>
   ```
 
-  * input控件的maxlength属性
+******
+
+### 17、input控件的maxlength属性
   
   ```html
   <!doctype html>
@@ -2364,12 +2401,15 @@ class Bird extends Animal {
   </html>
   ```
 
-  * html中元素的ID属性
-    * 在html文档当中，任何元素（节点）都有id属性，id属性是该节点的唯一标识，所以在同一个html文档中id值不能重复。
-    * 表单提交数据的时候，只和name有关，和id无关。
-    * id有什么用？
-      * JavaScript语言，可以对html文档当中的任意节点进行增删改的操作。那么增删改之前需要先拿到这个节点，通常我们通过id来拿节点对象。id的存在，让我们获取元素（节点）更方便。
-    * html文档是一棵树，树上有很多节点，每一个节点都有唯一的id。JavaScript主要就是对这棵DOM树上的节点进行增删改的。DOM（document）
+******
+
+### 18、html中元素的ID属性
+
+* 在html文档当中，任何元素（节点）都有id属性，id属性是该节点的唯一标识，所以在同一个html文档中id值不能重复。
+* 表单提交数据的时候，只和name有关，和id无关。
+* id有什么用？
+  * JavaScript语言，可以对html文档当中的任意节点进行增删改的操作。那么增删改之前需要先拿到这个节点，通常我们通过id来拿节点对象。id的存在，让我们获取元素（节点）更方便。
+* html文档是一棵树，树上有很多节点，每一个节点都有唯一的id。JavaScript主要就是对这棵DOM树上的节点进行增删改的。DOM（document）
 
   ```html
   <!doctype html>
@@ -2389,3 +2429,118 @@ class Bird extends Animal {
   ```
 
   * 继续学习<a href="https://www.bilibili.com/video/av62468669?p=26">点这P26</a>
+
+******
+
+### 19、html中的div和span
+
+* div和span都可以被称为“图层”；
+* 图层的作用是为了保证页面可以灵活的布局。
+* 图层就是一个一个的盒子，div嵌套div就是盒子套盒子。
+* div和span是可以定位的，只要定下div的左上角的x轴和y轴坐标即可。
+* 其实最早的网页是采用table进行布局的，但是table不灵活，太死板。现在的网页开发中div布局使用最多，几乎很少使用table进行布局了。
+* div和span的区别？
+  * div独自占用一行（默认情况下）
+  * span不会独自占一行。
+
+  ```html
+  <!doctype html>
+  <html>
+
+  <head>
+    <title>html中的div和span</title>
+  </head>
+
+  <body>
+    <div>this is div1</div>
+    <div>this is div2</div>
+
+    <span>this is span1</span>
+    <span>this is span2</span>
+
+    <div>this
+      <div>
+        is
+        <div>
+          div
+        </div>
+      </div>
+    </div>
+  </body>
+
+  </html>
+  ```
+
+******
+
+## 5、javaweb篇
+
+链接：<a href="https://www.bilibili.com/video/av29086718/?p=1" >哔哩哔哩 JavaWeb学习视频</a>
+
+******
+
+* JSP 动态网页
+
+### 1、JSP九大内置对象（自带，不需要new也能使用的对象）
+
+1. out：输出对象，向客户端输出内容
+2. request：请求对象，存储客户端向服务端发送的请求信息
+   * 常见方法：
+     1. String getParameter(String name) 根据请求的字段名key，返回字段值value
+     2. String[] getParameterValues(String name) 根据请求的字段名key，返回多个字段值value （checkbox）
+     3. void setCharacterEncoding("编码utf-8") 设置请求编码
+     4. getRequestDispatcher(“b.jsp”).forward(request,response) 请求转发的方式跳转页面
+     5. getServerContext() 获取项目的ServerletContext对象
+   * get提交方式：method="get" 、超链接`<a herf="xx">`地址栏请求方式默认都属于get提交方式
+   * get和post请求方式的区别：
+     * get：在地址栏显示请求信息【地址栏能够容纳的信息有限，4-5KB】；
+     * post：在地址栏不显示请求信息【文件上传操作，必须是post】。
+
+  ```html
+   <%@ page language="java" contentType="text/html; charset=UTF-8"
+       pageEncoding="UTF-8"%>
+   <!DOCTYPE html>
+   <html>
+   <head>
+   <meta charset="UTF-8">
+   <title>Insert title here</title>
+   </head>
+   <body>
+  <form action="show.jsp"  method="post">
+  用户名：<input type="text" name="uname" /><br/>
+  密码：<input type="password" name="upwd"/><br/>
+  年龄：<input type="text" name="uage"/><br/>
+  爱好：<br/>
+  <input type="checkbox" name="uhobbies" value = "足球"/>足球
+  <input type="checkbox" name="uhobbies" value = "篮球"/>篮球
+  <input type="checkbox" name="uhobbies" value = "乒乓球"/>乒乓球<br/>
+  <input type="submit" value="注册">
+  </form>
+   </body>
+   </html>
+     ```
+
+     * 建议使用tomcat时，首先在server.xml 中统一get方式的编码  在设置端口号的后面加上 URIEncoding="UTF-8"
+3. response：响应对象
+   * 提供的方法：
+     1. void addCookie(Cookie Cookie); 服务端向客户端增加Cookie对象
+     2. void sendRedirect(String location) throws IOException; 页面跳转的一种方式（称为重定向）
+     3. void setContentType(String type); 设置服务端响应的编码（设置服务端的contentType类型）
+4. session
+   * Cookie 客户端，不是内置对象  是由服务端产生的，再发给客户端保存。相当于本地缓存的作用。
+     * 由javax.servlet.http.Cookie产生。
+     * 常见的方法：
+       1. public Cookie(String name,String value);
+       2. String getName(); 获取name
+       3. String getValue();获取value
+       4. void setMaxAge(int expiry); 最大有效期（秒）
+    * 服务端准备cookie：
+      * response.addCookie(Cookie cookie); 页面跳转：转发、重定向
+    * 客户端获取cookie：
+      * request.getCookies();
+5. pageContext
+
+6. application
+7. config
+8. page
+9.  exception
