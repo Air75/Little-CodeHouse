@@ -1831,6 +1831,680 @@ class Bird extends Animal {
 
 ******
 
+### **14、super关键字**
+
+* 附加学习<a href="https://www.bilibili.com/video/av88459449?p=306">动力节点老杜</a>
+* super是一个关键字，全部小写。
+* super和this对比着学习。
+  1. this
+     1. this能出现在实例方法和构造方法中。
+     2. this的语法是：`this.`,`this()`
+     3. this不能使用在静态方法中。
+     4. this.大部分情况下可以省略，在区分局部变量和实例变量的时候不能省略。
+     5. this() 只能出现在构造方法第一行，通过当前的构造方法去调用“本类”中其他的构造方法，目的是：代码复用。
+  2. super
+     1. super能出现在实例方法和构造方法中。
+     2. super的语法是：`this.`,`this()`
+     3. super不能使用在静态方法中。
+     4. super.大部分情况下可以省略。
+     5. super() 只能出现在构造方法第一行，通过当前的构造方法去调用“父类”中其他的构造方法，目的是：创建子类对象的时候，先初始化父类型特征。
+     6. super()表示通过子类的构造方法调用父类的构造方法。模拟现实中的这种场景：要想又儿子，需要先有父亲。
+     7. this()和super()不能共存。
+
+    ```java
+    public class Test {
+      public static void main(String[] args) {
+        new B();
+      }
+    }
+
+    class A {
+      public A() {
+        System.out.println("A类的无参数构造方法！");
+      }
+    }
+
+    class B extends A {
+      public B() {//当一个构造方法第一行既没有this()又没有super()的话，默认会有一个super();表示通过当前子类的构造方法调用父类的无参数构造方法。所以必须保证父类的无参数构造方法是存在的。
+      //即在此处会默认有super();
+        System.out.println("B类的无参数构造方法！");
+      }
+    }
+    ```
+
+### **15、抽象类**
+
+* 如何定义抽象类：
+  * class关键字前加abstract
+* 抽象类无法被实例化。
+* 抽象类无法创建对象。
+* 虽然抽象类没有办法实例化，但是抽象类也有构造方法，改构造方法时给子类创建对象用的。
+* 抽象类中可以定义抽象方法：
+  * 语法-->在方法的修饰符列表中添加abstract关键字，并且抽象方法应该以“;”结束，不能带有“{}”，例如：public abstract void m1();
+* 抽象类中不一定有抽象方法，但抽象方法必须出现在抽象类中。
+* 一个非抽象类继承抽象类，必须将抽象类中的抽象方法覆盖/实现/重写。
+  
+  ```java
+  public abstract class A{
+    //构造方法
+    A(){
+    System.out.println("A ..");
+       }
+      //抽象方法
+      public abstract void m1();
+      //程序入口
+    public static void main(String[] args){
+      //抽象类无法创建对象
+      //A a = new A();
+
+      //多态
+      A a = new B();
+    }
+  }
+  class B extends A{
+    public void m1(){
+
+    }
+    B(){
+      super();//父类的构造方法虽然调用了，但是并没有创建父类对象。
+    System.out.println("B ..");
+       }
+  }
+  ```
+
+******
+
+### **16、接口**
+
+* 课程链接<a href="https://www.bilibili.com/video/BV1kx411h7jv?p=82">动力节点</a>
+* 接口也是一种引用类型，可以等同看做类。
+* 语法格式：
+  * [修饰符] interface 接口名{}
+* 接口中只能出现：常量，抽象方法；
+* 接口其实是一个特殊的抽象类，特殊在接口是完全抽象的；
+* 接口中没有构造方法，接口无法被实例化；
+* 接口和接口之间可以多继承；
+* 一个类可以实现多个接口（这里的“实现”可以等同看作“继承”）；
+* 一个非抽象的类实现接口，需要将接口中所有的方法“实现/重写/覆盖”。
+  
+  ```java
+  public class Test {//接口的基础语法
+
+  }
+
+  interface A {
+    // 常量必须用public static final修饰
+    public static final String SUccess = "success";
+    public static final double PI = 3.14;
+    // public static final可以省略
+    byte MAX_VALUE = 127;// 常量
+
+    // 抽象方法，接口中所有的抽象方法都是public abstract
+    public abstract void m1();
+
+    // public abstract是可以省略的
+    void m2();
+  }
+
+  interface B {
+    void m1();
+  }
+
+  interface C {
+    void m2();
+  }
+
+  interface D {
+    void m3();
+  }
+
+  interface E extends B, C, D {// 支持多继承
+    void m4();
+  }
+
+  // inplements是实现的意思，是一个关键字
+  // inplements和extends意义相同
+  class MyClass implements B, C {
+    public void m1() {
+    }
+
+    public void m2() {
+    }
+  }
+
+  class F implements E {
+    public void m1() {
+    }
+
+    public void m2() {
+    }
+
+    public void m3() {
+    }
+
+    public void m4() {
+    }
+  }
+  ```
+
+  * 接口的作用：
+    * 可以使项目分层，所有层都面向接口开发，开发效率提高。
+    * 接口使代码和代码之间的耦合度降低，就像内存条和主板的关系，变得可“插拔”。可以随意切换。
+  * 接口和抽象类都能完成某个功能时，优先选择接口，因为接口可以实现多继承，并且一个类除了实现接口之外，还可以去继承其他类（保留了类的继承）。
+  
+******
+
+## **Java进阶学习部分**
+
+* 课程<a href="https://www.bilibili.com/video/BV1mE411x7Wt?p=1">动力节点老杜</a>
+* 目前主流的集成开发环境是：intellij IDEA
+* IDEA快捷键
+  * 快速生成main方法：psvm
+  * 快速生成输出语句：sout
+  * 删除一行：ctrl+y
+  * 退出任何窗口都可以使用esc键
+  * 任何新建，新增都可以用alt+insert
+  * 窗口变大变小：ctrl+shift+F2
+  * 提示方法参数：ctrl+p
+  * 单行注释：ctrl+/
+  * 多行注释：ctrl+shift+/
+  * 定位方法/属性/变量...
+    * 光标停在某个单词的下面，这个单词可能是方法名，变量名，停在单词下面后，按ctrl键，出现下划线，点击跳转。
+  * 复制一行：ctrl+d
+* IDEA自动保存，不需要ctrl+s
+* 继续学习<a href="https://www.bilibili.com/video/BV1mE411x7Wt?p=10">点这P10</a>
+
+******
+
+### **1、final关键字**
+
+* final是Java语言中的一个关键字
+* final表示最终的，不可变的
+* final可以修饰变量以及方法，还有类等等
+* final修饰的变量？
+  * final修饰的局部变量一旦赋值就不能重新赋值（final修饰的变量只能赋一次值）
+* final修饰的方法？
+  * 无法被覆盖/重写
+* final修饰的类？
+  * 无法被继承
+* final修饰引用
+  * 该引用只能指向一个对象，并且它只能永远指向该对象，无法再指向其他对象。并且在该方法执行过程中，该引用指向该对象之后，该对象不会被垃圾回收器回收。直到当前方法结束，才会释放空间。虽然final的引用指向对象A之后，不能再重新指向对象B，但是对象内部的数据可以被修改。
+* final修饰实例变量
+  * final修饰的实例变量，系统不会赋默认值，要求程序员必须手动赋值。手动赋值在变量后面直接赋值可以，也可以在构造函数中赋值。final修饰的实例变量一般添加static修饰。
+* static final联合修饰的变量称为“常量”，常量名建议全部大写，每个单词之间采用下划线衔接。
+  * 实际上常量和静态变量一样，区别在于常量的值不可变，都是存储在方法区，并且都是在类加载的时初始化。常量一般是公开的。
+
+******
+
+### **2、抽象类**
+
+* 抽象类无法实例化，无法创建对象
+  * 抽象类是类和类之间有共同特征，将这些具有共同特征的类进一步抽象形成了抽象类，由于类本省是不存在的，所以无法创建对象。抽象类和抽线类之间可能还会有共同特征，还可以进一步抽象。
+* 抽象类属于引用数据类型。
+* 语法：
+  
+  ```java
+  [修饰符列表] abstract class 类名{
+    类体;
+  }
+  ```
+
+* abstract 和 final 不能同时使用，该语句错误-->final abstract class Test{}
+* 抽象类虽然无法被实例化，但是有构造方法，这个构造方法是供子类使用的。
+* 抽象类关联到一个抽象方法，抽象方法表示没有实现的方法，没有方法体的方法，例如：`public abstract void doSome();`抽象方法的特点是没有方法体，以分号结尾，前面修饰符列表中有abstract关键字。抽象类中不一定有抽象方法，但抽象方法必须出现在抽象类中。
+* 继续学习<a href="https://www.bilibili.com/video/BV1mE411x7Wt?p=21">点这P21</a>
+* 一个非抽象的类继承抽象类，必须将抽象类中的抽象方法实现。这是Java语法上强行规定的，不然编译器会报错。这里的覆盖/重写也可以叫做实现（对抽象的实现）。
+* Java语言中凡是没有方法体的方法都是抽象方法？
+  * 错误。object类中就有很多方法没有方法体，都是以“;”结尾的，但是它们都不是抽象方法，例如：`public native int hashCode();`这个方法底层调用了C++写的动态链接库程序。前面修饰符列表没有abstract 有一个native 表示调用JVM本地程序。
+
+******
+
+### **3、接口**
+
+* 接口:
+  1. 接口也是一种引用数据类型,编译之后也是一个class字节码文件；
+  2. 接口是完全抽象的（抽象类是半抽象的）。或者说接口是特殊的抽象类；
+  3. 语法：`[修饰符列表] interface 接口名{}`
+  4. 接口支持多继承，一个接口可以继承多个接口；
+  5. 接口中只包含两部分内容，一部分是：常量。一部分是：抽象方法。接口中没有其他内容，只有以上两部分。
+  6. 接口中所有的元素都是public修饰的（都是公开的）。
+  7. 接口中的抽象方法定义时：public abstract修饰符可以省略。
+  8. 接口中的方法都是抽象方法，所以不能有方法体。
+  9. 接口中的常量前面的public final static也可以省略；
+
+    ```java
+    public class Test {
+    public static void main(String[] args){
+      //访问接口常量
+        System.out.println(math.PI);
+    }
+    }
+    interface A{
+
+    }
+    interface B{
+
+    }
+    interface C extends A,B{//接口支持多继承，一个接口可以继承多个接口
+      
+    }
+    interface math{//接口中的抽象方法定义时：public abstract修饰符可以省略
+    //public abstract void sum(int a,int b);
+    void sum(int a,int b);
+    //public final static double PI = 3.1415926;接口中的常量前面的public final static也可以省略
+    double PI = 3.1415926;
+    }
+    ```
+
+* 接口的基础语法：
+  1. 类和类之间叫做继承，类和接口之间叫做实现（仍然可以将实现看作继承）继承使用extends关键字，实现使用implements关键字。
+  2. 当一个非抽象的类实现接口的话，必须将接口中所有的抽象方法全部实现（覆盖，重写）。
+  3. 接口和接口之间可以实现多继承，一个类可以实现同时实现多个接口。这种机制弥补了Java中类和类之间只支持单继承的缺陷。
+   
+   ```java
+   public class Test{
+    public static void main(String[] args){
+      mathImpl ma = new mathImpl();
+      System.out.println(ma.sum(1, 2));
+      System.out.println(ma.sub(2, 1));
+    }
+    }
+    interface math{
+      int sum(int a,int b);
+      int sub(int a,int b);
+    }
+    class mathImpl implements math {
+      public int sum(int a,int b){//实现方法的时候，需要使用public修饰，因为接口中的方法是公共的
+        return a+b;
+      }
+      public int sub(int a,int b){
+        return a-b;
+      }
+    }
+    ```
+
+    ```java
+    public class Test{
+      public static void main(String[] args){
+        C c = new C();
+        c.m1();
+        c.m2();
+      }
+    }
+    interface A{
+      void m1();
+    }
+    interface B{
+      void m2();
+    }
+    class C implements A,B{//一个类可以实现同时实现多个接口
+      public void m1(){
+        System.out.println("interface A");
+      }
+      public void m2(){
+        System.out.println("interface B");
+      }
+    }
+    ```
+
+    ```java
+    public class Test{
+    public static void main(String[] args){
+      fly ca = new cat();
+    ca.flya();
+      }
+    }
+      class Animal{
+
+      }
+      interface fly{
+        void flya();
+      }
+      class cat extends Animal implements fly{//继承和实现都存在的时候，extends在前，implements在后
+          public void flya(){
+            System.out.println("cat fly");
+          }
+      }
+    ```
+
+* 继续学习<a href="https://www.bilibili.com/video/BV1mE411x7Wt?p=33">点这P33</a>
+* 接口在开发中的作用
+  * 类似于多态在开发中的作用。
+  * 多态：面向抽象编程，不要面向具体编程，降低程序的耦合度，提高程序的扩展力。
+  * 接口是完全抽象的，而我们以后正好要求，面向抽象编程，面向抽象编程这句话可以修改为-->面向接口编程。有了接口就有了可插拔。
+  * 继续学习<a href="https://www.bilibili.com/video/BV1mE411x7Wt?p=38">点这P38</a>
+
+### **4、类和类之间的关系**
+
+* is a、has a、like a
+  * cat is a Animal 凡是能满足is a 的表示“继承关系”；
+  * I has a Pen 凡是能满足has a 表示“关联关系”，关联关系通常以“属性”的形式存在；
+  * cooker like a foodmenu 凡是能够满足like a关系的表示“实现关系”，实现关系通常是：类实现接口。
+
+### **5、包机制概述**
+
+* package和import
+  * 为什么要使用package？
+    * package是Java中的包机制，包机制的作用是为了方便程序的管理。不同功能的类分别存放在不同的包下。（按照功能划分的，不同的软件包具有不同的功能。）
+  * package怎么用？
+    * package是一个关键字，后面加包名。例如：`package com.air.java.test01;`
+    * 注意；package语句只允许出现在java源代码的第一行。
+  * 包名的命名规范？
+    * 一般都采用公司域名倒序的方式（因为公司域名具有全球唯一性）
+    * 公司域名倒序+项目名+模块名+功能名
+  * 对于带有package的java程序怎么编译和运行？
+    * 类名变为：com.air.javase.test01.Test
+    * 编译：javac -d . Test.java
+    * 运行：java com.air.javase.test01.Test
+
+    ```java
+    package com.air.javase.test01;
+    public class Test{
+      public static void main(String[] args){
+        System.out,println("Hello World!");
+      }
+    }
+    ```
+
+  * 关于import
+    * import什么时候使用？
+      * A类中使用B类；
+      * A和B类在同一个包下时，不需要import；
+      * A和B类不在同一个包下时，需要import；
+    * import怎么用？
+      * import语句只能出现在package语句之下，class声明语句之上；import语句可以采用星号的方式。例在Test2中使用Test；
+      
+      ```java
+      package com.air.javase.testo2;
+      import com.air.javase.test01.Test;//或者import com.air.javase.test01.*;
+      public class Test02{
+        public static void mian(String[] args){
+          Test te = new Test();
+          System.out.println(te);
+        }
+      }
+      ```
+
+### **6、访问控制权限**
+
+* 访问控制权限修饰符可以修饰什么？
+  1. 属性（4个访问控制权限修饰符都可以用）
+  2. 方法（4个访问控制权限修饰符都可以用）
+  3. 类（可用public和默认）
+  4. 接口（可用public和默认）
+  5. ··· ···
+* 访问控制权限有哪些？
+  1. private
+  2. protected
+  3. public
+  4. 默认 
+* 以上4个访问控制权限的控制范围：
+
+ | 访问控制权限修饰符 |本类|同包|子类|任意位置|
+| :--: | :--: | :--: | :--: | :--: |
+|public|可以|可以|可以|可以|
+|protected|可以|可以|可以|不行|
+|默认|可以|可以|不行|不行|
+|private|可以|不行|不行|不行|
+
+### **7、object类**
+
+* 任何一个类默认继承Object，就算没有直接继承，也会间接继承。
+* Object中有哪些常用的方法？
+  * 去哪里找这些方法？
+    * 源代码；
+    * 类库的帮助文档。
+  * 目前为止只需要知道：
+    * protected Object clone() //负责对象克隆
+    * int hashCode() //获取对象哈希值的一个方法
+    * boolean equals(Object obj) //判断两个对象是否相等
+    * String toString() //将对象转换为字符串形式
+    * protected void finalize() //垃圾回收器负责调用的方法
+  * 继续学习<a href ="https://www.bilibili.com/video/BV1mE411x7Wt?p=52">点这P52</a>
+  * 关于Object类中的toString()方法 
+    * toString()方法设计的目的是：通过调用这个方法可以将一个“java对象”转换成字符串形式。其实sun公司开发java语言的时候，建议所有的子类都重写吧toString()方法。toString()应该是一个简洁的、详实的、易阅读的。
+    * 注意：输出引用的时候，会自动调用该引用的toString()方法。
+    * System.out.println(mT);
+
+    ```java
+    public class Test{
+    public static void main(String[] args){
+      MyTime mT = new MyTime(2020,5,3);
+      //一个日期对象转换成字符串形式的话，希望的是看到具体的时间
+      //MyTime类重写toString()方法之前
+      //System.out.println(mT.toString());//输出：MyTime@7382f612
+
+      //MyTime类重写toString()方法之后
+      System.out.println(mT.toString());//输出：2020年5月3日
+    }
+    }
+    class MyTime{
+      int year;
+      int month;
+      int day;
+
+      public MyTime(){
+
+      }
+      public MyTime(int year,int month,int day){
+        this.year = year;
+        this.month = month;
+        this.day = day;
+      }
+
+      //重写toString()方法
+      //向简洁的、详实的、易阅读的方向发展
+      public String toString(){
+        return this.year+"年"+this.month+"月"+this.day+"日";
+      }
+    }
+    ```
+
+  * 关于Object类中的equals方法
+    * sun公司设计这个方法的目的：以后编程的过程当中，都要通过equals方法来判断两个对象是否相等。equals方法是用来判断两个对象是否相等的。
+
+    ```java
+    public class Test{
+      public static void main(String[] args) {
+        //判断两个基本数据类型的数据是否相等直接使用“==”就行
+        int a = 100;
+        int b = 100;
+        //这个“==”是判断a中保存的100和b中保存的100是否相等
+        System.out.println(a==b);//输出 true
+
+        //判断两个java对象是否相等
+        MyTime t1 =new MyTime(2008,1,1);
+        MyTime t2 =new MyTime(2008,1,1);
+        //这里的“==”判断的是：t1中保存的对象地址和t2中保存的对象地址是否相等
+        System.out.println(t1 == t2);//输出：false
+        //未重写时输出结果
+        System.out.println(t1.equals(t2));//false
+      }
+    }
+    class MyTime{
+      int year;
+      int month;
+      int day;
+
+      public MyTime(){
+
+      }
+      public MyTime(int year,int month,int day){
+        this.year = year;
+        this.month = month;
+        this.day = day;
+    }
+    //Object类中的equals方法当中，默认采用的是“==”判断两个java对象是否相等，而“==”判断的是两个对象的地址是否相等，如果需要判断两个对象的内容是否相等，就需要重写equals方法
+    public boolean equals(Object obj){
+        int year1 = this.year;
+        int month1 = this.month;
+        int day1 = this.day;
+        if(obj instanceof MyTime){
+          MyTime t = (MyTime)obj;
+          int year2 = t.year;
+          int month2 = t.month;
+          int day2 = t.day;
+          if(year1==year2 && month1 == month2 && day1 == day2){
+            return true;
+          }
+        }
+        return false;
+    }
+    }
+    ```
+
+ * IDEA工具可以生成toString()以及equals方法
+
+  ```java
+  public class Test{//java语言当中的string重写了toString()和equals方法
+    public static void main(String[] args){
+      //大部分情况下，采用这种方式创建字符串对象
+      String s1 = "Hello";
+      String s2 = "World";
+      System.out.println(s1 == s2);
+
+      //实际上string也是一个类，不属于基本数据类型，所以一定存在构造方法
+      String s3 = new String("Test1");
+      String s4 = new String("Test1");
+      System.out.println(s3==s4);//false
+      //String类已经重写了equals方法，比较两个字符串不能使用“==”，必须使用equals。
+      System.out.println(s3.equals(s4));//true
+
+      String x = new String("Test2");
+      //如果String没有重写toString方法，输出结果：java.lang.String@十六进制的地址
+      //经过测试，string类已经重写了toString方法
+      System.out.println(x.toString());
+    }
+  }
+  ```
+
+    * 结论：
+      * Java中什么类型的数据需要使用“==”判断’
+        * java中基本数据类型比较是否相等，使用“==”
+      * Java中什么类型的数据需要使用equals判断
+        * Java中所有的引用数据类型统一使用equals方法来进行判断是否相等
+
+  * Object类中的finalize()方法
+    * 这个方法是protected修饰的，finalize()方法只有一个方法体，里面没有代码。
+    * 这个方法不需要程序员手动调用，JVM的垃圾回收器负责调用这个方法。不像equals、toString()这些方法需要写代码调用。finalize()只需要重写，重写完将来自动会有程序来调用。
+    * finalize()方法的执行时机；
+      * 当一个java对象即将被垃圾回收器回收的时候，垃圾回收器负责调用finalize()方法。
+    * finalize()方法实际上是SUN公司为java程序员准备的一个时机，垃圾销毁时机。如果希望在对象销毁时指向一段代码的话，这段代码要写到finalize()方法当中。
+
+    ```java
+    public class Test{
+      public static void main(String[] args){
+        //Person p = new Person();
+        //提示：java中的垃圾回收器不是轻易启动的，可能会因为垃圾太少或者时间没到等情况不执行
+        //把p变为垃圾
+        //p = null;
+        //多造点垃圾
+        for(int i = 0;i<=100000000;i++){
+          Person p = new Person();
+          p = null;
+        }
+      }
+    }
+
+    class Person{
+      //重写finalize()方法
+      //person类型的对象被垃圾回收器回收的时候，垃圾回收器负责调用：p.finalize();
+      //项目开发中会有这样的需求：所有对象在JVM中被释放的时候，请记录释放时间。这时则需要将代码写到finalize()中
+      protected void finalize() throws Throwable{
+        System.out.println("即将被销毁！");
+      }
+    }
+    ```
+
+  * 关于Object类中的hashCode方法
+    * 这个方法不是抽象方法，底层调用C++程序
+    * 这个方法返回的是哈希码。实际上就是一个java对象的内存地址，经过哈希算法，得出的一个值。所以hashCode()执行结果可以等同看做一个java对象的内存地址。
+
+      ```java
+      public class Test{
+        public static void main(String[] args){
+          Object o = new Object();
+          int hashCodeValue = o.hashCode();
+          //对象内存地址经过哈希算法转换的一个数字，可以等同看作内存地址
+          System.out.println(hashCodeValue);
+        }
+      }
+      ```
+
+### **8、匿名内部类**
+
+* 什么是内部类？
+  * 在类的内部又定义了一个类，被称为内部类。
+* 内部类的分类：
+  * 静态内部类：类似于静态变量
+  * 实例内部类：类似于实例变量
+  * 局部内部类：类似于局部变量
+
+    ```java
+    public class Test{
+      static class NeiBu00{
+        //该类在类的内部，所以称为内部类
+        //由于前面又static，所以称为“静态内部类”
+      }
+      class Neibu01{
+        //该类在类的内部，所以称为内部类
+        //没有static叫做实例内部类
+      }
+      public void doSome(){
+        int i = 100;
+        class NeiBu02{
+          //该类在类的内部，所以称为内部类
+          //局部内部类
+        }
+      }
+    }
+    ```
+
+* 匿名内部类是局部内部类的一种，因为这个类没有名字，所以叫做匿名内部类
+  ```java
+  public class Test{
+    public static void main(String[] args){
+      Mymath ma = new Mymath();
+      //未使用匿名内部类
+      //ma.sum(new Calcu2(), 1, 5);
+      //使用匿名内部类
+      ma.sum(new Calcu(){//写的是接口名，以下的程序代表了对接口的实现
+        public int sum(int a,int b){
+          return a+b;
+        }
+      }, 1, 5);
+    }
+  }
+  interface Calcu{
+    int sum(int a,int b);
+  }
+  // class Calcu2 implements Calcu{
+  //   public int sum(int a,int b){
+  //     return a+b;
+  //   }
+  // }//使用匿名内部类时不需要再此处写接口的实现
+
+  class Mymath{
+    public void sum(Calcu c,int x,int y){
+      int reValue = c.sum(x,y);
+      System.out.println(x+"+"+y+"="+reValue);
+    }
+  }
+  ```
+
+  * 不建议使用匿名内部类
+
+### **9、一维数组**
+
+* Java语言中的数组是一种引用数据类型，不属于基本数据类型。父类是Object
+* 数组实际上是一个容器，可以同时容纳多个元素。（数组是一个数据的集合）
+* 数组当中可以存储基本类型的数据，也可以存储引用类型的数据。
+* 数组因为是引用类型，所以数组对象在堆内存中。
+* 继续学习<a href="https://www.bilibili.com/video/BV1mE411x7Wt?p=70">点这P77</a>
+* 数组不能存储大的数据量，因为很难在内存空间上找到一块特别大的连续的内存空间
+
+******
+
 * **第二部分**
 
 ******
@@ -2473,7 +3147,39 @@ class Bird extends Animal {
 
 ******
 
-## 5、javaweb篇
+## 5、JDBC
+
+* 课程链接<a href="https://www.bilibili.com/video/av59263860?p=1">动力节点老杜（JDBC）</a>
+* JDBC是什么？
+  * java database connectivity（java语言连接数据库）
+* JDBC的本质？
+  * SUN公司制定的一套接口（interface）java.sql.*;(这个软件包下有很多接口)；
+  * 接口都有调用者和实现者；
+  * 面向接口调用、面向接口写实现类，这都属于面向接口编程。
+  * 为什么要面向接口编程？
+    * 解耦合：降低程序的耦合度，提高程序的扩展力。
+    * 多态机制就是非常典型的：面向抽象编程（不要面向具体编程）；
+    * 建议：
+      * Animal a = new Cat();
+      * Animal a = new Dog();
+    * 不建议：
+      * Dog d = new Dog();
+      * Cat c = new Cat();
+* 为什么SUN制定一套JDBC接口？
+  * 因为每一个数据库的底层实现原理都不一样，Oracle数据库有自己的原理，MySQL数据库也有自己的原理......每一个数据库产品都有自己独特的实现原理。
+* 驱动：所有的数据库驱动都是以jar包的形式存在，jar包当中有很多的.class文件，这些class文件就是对JDBC接口的实现。
+* 继续学习<a href="https://www.bilibili.com/video/av59263860?p=4">点这P4</a>
+* JDBC编程六步
+  1. 注册驱动（告诉Java程序，即将要连接的是哪个品牌的数据库）
+  2. 获取连接（表示JVM的进程和数据库进程之间的通道打开了，这属于进程之间的通信，重量级的，使用完之后一定要释放）
+  3. 获取数据库操作对象（专门执行SQL语句的对象）
+  4. 执行SQL语句（DQL，DML...）
+  5. 处理查询结果集（只有当第四步执行的是select语句的时候，才有这第五步处理查询结果集）
+  6. 释放资源 （使用完资源之后一定要关闭资源。Java和数据库属于进程之间的通信。）
+
+******
+
+## 6、javaweb篇
 
 链接：<a href="https://www.bilibili.com/video/av29086718/?p=1" >哔哩哔哩 JavaWeb学习视频</a>
 

@@ -766,8 +766,6 @@
 //   }
 // }
 
-
-
 // public class Test {
 //   public static void main(String[] args) {// string当中的方法调用示例
 //     String newString = "ab替换前ab替换前ab替换前ab替换前".replaceAll("替换前", "替换后");
@@ -775,7 +773,6 @@
 //     System.out.println("这句话一共8个字".length());
 //   }
 // }
-
 
 // public class Test{
 //   public static void main(String[] args) {
@@ -804,17 +801,511 @@
 //   }
 // }
 
+// public class Test{
+// public static void main(String[] args) {
+//   User u = new User();
+//   System.out.println(u.i);
+//   System.out.println(u.j);
+// }
+// }
+// class User{
+//   //受保护的
+//   protected int i = 10;
+//   //缺省的
+//   int j = 20;
+// }
 
-public class Test{
-public static void main(String[] args) {
-  User u = new User();
-  System.out.println(u.i);
-  System.out.println(u.j);
+// public class TestTest {
+//     public static void main(String[] args) {
+//       new B();
+//     }
+//   }
+  
+//   class A {
+//     public A() {
+//       System.out.println("A类的无参数构造方法！");
+//     }
+//   }
+  
+//   class B extends A {
+//     public B() {
+//       System.out.println("B类的无参数构造方法！");
+//     }
+//   }
+  
+//   public class Test {//接口的基础语法
+  
+//   }
+  
+//   interface A {
+//     // 常量必须用public static final修饰
+//     public static final String SUccess = "success";
+//     public static final double PI = 3.14;
+//     // public static final可以省略
+//     byte MAX_VALUE = 127;// 常量
+  
+//     // 抽象方法，接口中所有的抽象方法都是public abstract
+//     public abstract void m1();
+  
+//     // public abstract是可以省略的
+//     void m2();
+//   }
+  
+//   interface B {
+//     void m1();
+//   }
+  
+//   interface C {
+//     void m2();
+//   }
+  
+//   interface D {
+//     void m3();
+//   }
+  
+//   interface E extends B, C, D {// 支持多继承
+//     void m4();
+//   }
+  
+//   // inplements是实现的意思，是一个关键字
+//   // inplements和extends意义相同
+//   class MyClass implements B, C {
+//     public void m1() {
+//     }
+  
+//     public void m2() {
+//     }
+//   }
+  
+//   class F implements E {
+//     public void m1() {
+//     }
+  
+//     public void m2() {
+//     }
+  
+//     public void m3() {
+//     }
+  
+//     public void m4() {
+//     }
+//   }
+  
+  
+  // public class Test{
+  // public static void main(String[] args){
+  //   Object o = new Object();
+  //   String str = o.toString();
+  //   System.out.println(str);
+  // }
+  // }
+  
+  
+  // public class Test{//JDBC编程六步
+  //   public static void main(String[] args){
+  //     //1.注册为驱动
+  //     DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.Driver());
+  //   }
+  // }
+  
+  
+  // public class Test{
+  //   public static void main(String[] args) {
+  //       Animal cat = new cat();
+  //       cat.move();
+  //       }
+  // }
+  // abstract class Animal{
+  //   public abstract void move();
+  // }
+  // class cat extends Animal{
+  //   public void move(){
+  //       System.out.println("cat move");
+  //   }
+  // }
+
+  // public class Test {
+  //   public static void main(String[] args){
+  //     System.out.println(math.PI);
+  //   }
+  // }
+  // interface A{
+
+  // }
+  // interface B{
+
+  // }
+  // interface C extends A,B{
+
+  // }
+  // interface math{//接口中的抽象方法定义时：public abstract修饰符可以省略
+  //   //public abstract void sum(int a,int b);
+  //   void sum(int a,int b);
+  //   //public final static double PI = 3.1415926;接口中的常量前面的public final static也可以省略
+  //   double PI = 3.1415926;
+  // }
+
+
+  // public class Test{
+  //   public static void main(String[] args){
+  //     mathImpl ma = new mathImpl();
+  //     System.out.println(ma.sum(1, 2));
+  //     System.out.println(ma.sub(2, 1));
+  //   }
+  // }
+  // interface math{
+  //   int sum(int a,int b);
+  //   int sub(int a,int b);
+  // }
+  // class mathImpl implements math {
+  //   public int sum(int a,int b){
+  //     return a+b;
+  //   }
+  //   public int sub(int a,int b){
+  //     return a-b;
+  //   }
+  // }
+
+
+  // public class Test{
+  //     public static void main(String[] args){
+  //       C c = new C();
+  //       c.m1();
+  //       c.m2();
+  //     }
+  // }
+  // interface A{
+  //   void m1();
+  // }
+  // interface B{
+  //   void m2();
+  // }
+  // class C implements A,B{//一个类可以实现同时实现多个接口
+  //   public void m1(){
+  //     System.out.println("interface A");
+  //   }
+  //   public void m2(){
+  //     System.out.println("interface B");
+  //   }
+  // }
+
+
+//   public class Test{
+//     public static void main(String[] args){
+//       fly ca = new cat();
+//     ca.flya();
+//   }
+// }
+//   class Animal{
+
+//   }
+//   interface fly{
+//     void flya();
+//   }
+//   class cat extends Animal implements fly{//继承和实现都存在的时候，extends在前，implements在后
+//       public void flya(){
+//         System.out.println("cat fly");
+//       }
+//   }
+
+// public class Test{
+//   public static void main(String[] args) {
+//   int chessarr[][] = new int[11][11];
+//   chessarr[1][2] = 1;
+//   chessarr[2][3] = 2;
+//   for(int[] row:chessarr){
+//       for(int data:row){
+//           System.out.printf("%d\t",data);
+//       }
+//       System.out.println();
+//   }
+//   }
+// }
+
+// public class Test{
+//   public static void main(String[] args){
+//     MyTime mT = new MyTime(2020,5,3);
+//     //一个日期对象转换成字符串形式的话，希望的是看到具体的时间
+//     //MyTime类重写toString()方法之前
+//     //System.out.println(mT.toString());//输出：MyTime@7382f612
+
+//     //MyTime类重写toString()方法之后
+//     System.out.println(mT.toString());//输出：2020年5月3日
+//   }
+// }
+// class MyTime{
+//   int year;
+//   int month;
+//   int day;
+
+//   public MyTime(){
+
+//   }
+//   public MyTime(int year,int month,int day){
+//     this.year = year;
+//     this.month = month;
+//     this.day = day;
+//   }
+
+//   //重写toString()方法
+//   //向简洁的、详实的、易阅读的方向发展
+//   public String toString(){
+//     return this.year+"年"+this.month+"月"+this.day+"日";
+//   }
+// }
+
+
+// public class Test{
+//   public static void main(String[] args) {
+//     //判断两个基本数据类型的数据是否相等直接使用“==”就行
+//     int a = 100;
+//     int b = 100;
+//     //这个“==”是判断a中保存的100和b中保存的100是否相等
+//     System.out.println(a==b);//输出 true
+
+//     //判断两个java对象是否相等
+//     MyTime t1 =new MyTime(2008,1,1);
+//     MyTime t2 =new MyTime(2008,1,1);
+//     //这里的“==”判断的是：t1中保存的对象地址和t2中保存的对象地址是否相等
+//     System.out.println(t1 == t2);//输出：false
+//     //未重写时输出结果
+//     System.out.println(t1.equals(t2));//false
+//   }
+// }
+// class MyTime{
+//   int year;
+//   int month;
+//   int day;
+
+//   public MyTime(){
+
+//   }
+//   public MyTime(int year,int month,int day){
+//     this.year = year;
+//     this.month = month;
+//     this.day = day;
+// }
+// //Object类中的equals方法当中，默认采用的是“==”判断两个java对象是否相等，而“==”判断的是两个对象的地址是否相等，如果需要判断两个对象的内容是否相等，就需要重写equals方法
+// public boolean equals(Object obj){
+//     int year1 = this.year;
+//     int month1 = this.month;
+//     int day1 = this.day;
+//     if(obj instanceof MyTime){
+//       MyTime t = (MyTime)obj;
+//       int year2 = t.year;
+//       int month2 = t.month;
+//       int day2 = t.day;
+//       if(year1==year2 && month1 == month2 && day1 == day2){
+//         return true;
+//       }
+//     }
+//     return false;
+// }
+// }
+
+
+// public class Test{//java语言当中的string重写了toString()和equals方法
+//   public static void main(String[] args){
+//     //大部分情况下，采用这种方式创建字符串对象
+//     String s1 = "Hello";
+//     String s2 = "World";
+//     System.out.println(s1 == s2);
+
+//     //实际上string也是一个类，不属于基本数据类型，所以一定存在构造方法
+//     String s3 = new String("Test1");
+//     String s4 = new String("Test1");
+//     System.out.println(s3==s4);//false
+//     //String类已经重写了equals方法，比较两个字符串不能使用“==”，必须使用equals。
+//     System.out.println(s3.equals(s4));//true
+
+//     String x = new String("Test2");
+//     //如果String没有重写toString方法，输出结果：java.lang.String@十六进制的地址
+//     //经过测试，string类已经重写了toString方法
+//     System.out.println(x.toString());
+//   }
+// }
+
+
+// public class Test{
+//   public static void main(String[] args){
+//     //Person p = new Person();
+//     //提示：java中的垃圾回收器不是轻易启动的，可能会因为垃圾太少或者时间没到等情况不执行
+//     //把p变为垃圾
+//     //p = null;
+//     //多造点垃圾
+//     for(int i = 0;i<=100000000;i++){
+//       Person p = new Person();
+//       p = null;
+//     }
+//   }
+// }
+
+// class Person{
+//   //重写finalize()方法
+//   //person类型的对象被垃圾回收器回收的时候，垃圾回收器负责调用：p.finalize();
+//   //项目开发中会有这样的需求：所有对象在JVM中被释放的时候，请记录释放时间。这时则需要将代码写到finalize()中
+//   protected void finalize() throws Throwable{
+//     System.out.println("即将被销毁！");
+//   }
+// }
+
+
+// public class Test{
+//   public static void main(String[] args){
+//     Object o = new Object();
+//     int hashCodeValue = o.hashCode();
+//     //对象内存地址经过哈希算法转换的一个数字，可以等同看作内存地址
+//     System.out.println(hashCodeValue);
+//   }
+// }
+
+
+// public class Test{
+//   static class NeiBu00{
+//     //该类在类的内部，所以称为内部类
+//     //由于前面又static，所以称为“静态内部类”
+//   }
+//   class Neibu01{
+//     //该类在类的内部，所以称为内部类
+//     //没有static叫做实例内部类
+//   }
+//   public void doSome(){
+//     int i = 100;
+//     class NeiBu02{
+//       //该类在类的内部，所以称为内部类
+//       //局部内部类
+//     }
+//   }
+// }
+
+
+// public class Test{
+//   public static void main(String[] args){
+//     Mymath ma = new Mymath();
+//     //未使用匿名内部类
+//     //ma.sum(new Calcu2(), 1, 5);
+//     //使用匿名内部类
+//     ma.sum(new Calcu(){//写的是接口名，以下的程序代表了对接口的实现
+//       public int sum(int a,int b){
+//         return a+b;
+//       }
+//     }, 1, 5);
+//   }
+// }
+// interface Calcu{
+//   int sum(int a,int b);
+// }
+// // class Calcu2 implements Calcu{
+// //   public int sum(int a,int b){
+// //     return a+b;
+// //   }
+// // }//使用匿名内部类时不需要再此处写接口的实现
+
+// class Mymath{
+//   public void sum(Calcu c,int x,int y){
+//     int reValue = c.sum(x,y);
+//     System.out.println(x+"+"+y+"="+reValue);
+//   }
+// }
+
+import java.util.Scanner;
+//该方法实现的队列只能使用一次，不能复用
+public class Test {
+    public static void main(String[] args) {//数组模拟队列
+        System.out.println("Hello world");
+        Queue queue = new Queue(4);
+        boolean loop = true;
+        while (loop) {
+            System.out.println("a:添加数据");
+            System.out.println("g:获取数据");
+            System.out.println("s:查看队列");
+            System.out.println("h:查看头数据");
+        Scanner scanner =new Scanner(System.in);
+        String x = scanner.next();
+        int y;
+        switch (x)
+        {
+            case "a":
+                System.out.println("请输入一个数据");queue.addQueue(y=scanner.nextInt());break;
+            case "g":try {
+                System.out.println(queue.getQueue());break;
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());break;
+            }
+            case "s":try {
+                queue.showQueue();break;
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());break;
+            }
+            case "h":try {
+                System.out.println(queue.headQueue());break;
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        /*int get = queue.getQueue();
+        System.out.println(get);*/
+    }
+    }
 }
-}
-class User{
-  //受保护的
-  protected int i = 10;
-  //缺省的
-  int j = 20;
+
+class Queue{
+    private int MaxSize;
+    private int front;
+    private int rear;
+    private int[] arr;
+    public Queue(int arrMaxSize){
+        MaxSize = arrMaxSize;
+        front = -1;
+        rear = -1;
+        arr = new int[MaxSize];
+    }
+    public boolean isFull(){//判断队列是否为满
+        return rear == MaxSize-1;
+    }
+    public boolean isEmpty(){//判断队列是否为空
+        return rear == front;
+    }
+    public void addQueue(int n){//添加数据到队列
+        //先判断队列是否为满
+        if(isFull()){
+            System.out.println("F队列已满，不能添加数据！");
+            return;
+        }
+        rear++;
+        arr[rear] = n;
+    }
+    public int getQueue() {//获取队列的数据，出队列
+        //判断队列是否为空
+        if (isEmpty()) {
+            //通过抛出异常
+            throw new RuntimeException("G队列空，不能获取数据！");
+        }
+        front++;
+        return arr[front];
+    }
+    public void showQueue(){//显示队列的所有数据
+        //遍历
+        if(isEmpty()){
+            System.out.println("S队列为空，没有数据！");
+            return;
+        }
+        for(int i = 0;i<arr.length;i++){
+            System.out.printf("arr[%d]=%d\n",i,arr[i]);
+        }
+    }
+    public int headQueue(){//显示队列的头数据
+        //判断
+        if(isEmpty()){
+            throw new RuntimeException("H队列为空，无头数据");
+        }
+        return arr[front+1];
+    }
 }
